@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      width: 320px;
+      padding: 0;
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+
+    .container {
+      padding: 20px;
+    }
+
+    h1 {
+      margin: 0 0 20px 0;
+      font-size: 20px;
+      color: white;
+      text-align: center;
+    }
+
+    .button {
+      width: 100%;
+      padding: 15px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-align: center;
+      color: white;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    .button-primary {
+      background: linear-gradient(135deg, #FFD700, #FFA500);
+      color: #000;
+    }
+
+    .button-secondary {
+      background: rgba(255, 255, 255, 0.2);
+      border: 2px solid white;
+    }
+
+    .button-danger {
+      background: rgba(255, 0, 0, 0.7);
+    }
+
+    .status {
+      background: rgba(255, 255, 255, 0.15);
+      padding: 15px;
+      border-radius: 8px;
+      margin: 15px 0;
+      color: white;
+      text-align: center;
+      font-size: 13px;
+    }
+
+    .toggle-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 12px;
+      border-radius: 8px;
+      margin: 10px 0;
+      color: white;
+    }
+
+    .toggle {
+      position: relative;
+      width: 50px;
+      height: 26px;
+    }
+
+    .toggle input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: .4s;
+      border-radius: 26px;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      transition: .4s;
+      border-radius: 50%;
+    }
+
+    input:checked + .slider {
+      background-color: #FFD700;
+    }
+
+    input:checked + .slider:before {
+      transform: translateX(24px);
+    }
+
+    .emoji {
+      font-size: 24px;
+      margin-right: 8px;
+    }
+
+    .info {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 12px;
+      text-align: center;
+      margin-top: 15px;
+      padding-top: 15px;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1><span class="emoji">🎯</span>Kahoot Highlighter</h1>
+
+    <div class="status" id="status">
+      Ready to highlight!
+    </div>
+
+    <button class="button button-primary" id="highlightNow">
+      <span class="emoji">✨</span> Highlight Now
+    </button>
+
+    <button class="button button-secondary" id="inspectMode">
+      <span class="emoji">🔍</span> Inspect Mode
+    </button>
+
+    <button class="button button-secondary" id="highlightAll">
+      <span class="emoji">🌟</span> Highlight ALL Text
+    </button>
+
+    <div class="toggle-container">
+      <span>Debug Panel</span>
+      <label class="toggle">
+        <input type="checkbox" id="debugToggle" checked>
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <div class="toggle-container">
+      <span>Auto-Scan</span>
+      <label class="toggle">
+        <input type="checkbox" id="autoScanToggle" checked>
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <button class="button button-danger" id="clearHighlights">
+      <span class="emoji">🧹</span> Clear All
+    </button>
+
+    <div class="info">
+      Press Ctrl+Shift+H to highlight<br>
+      Press Ctrl+Shift+I to inspect
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

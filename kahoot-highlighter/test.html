@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kahoot Question Test Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 40px;
+            background-color: #f5f5f5;
+        }
+        .test-section {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        .question-container {
+            margin: 30px 0;
+            padding: 20px;
+            background: #fff;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <h1>Kahoot Extension Test Page</h1>
+    <p>This page contains various question formats to test the highlighter extension.</p>
+
+    <div class="test-section">
+        <h2>Test 1: Functional Selector</h2>
+        <div class="question-container">
+            <div data-functional-selector="question-text">
+                What is the capital of France?
+            </div>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>Test 2: Question Text Class</h2>
+        <div class="question-container">
+            <div class="question__QuestionText">
+                Which planet is known as the Red Planet?
+            </div>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>Test 3: Question Title</h2>
+        <div class="question-container">
+            <div class="question-title">
+                What is 2 + 2?
+            </div>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>Test 4: H2 with Question Class</h2>
+        <div class="question-container">
+            <h2 class="question-header">
+                Who wrote Romeo and Juliet?
+            </h2>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>Test 5: Role Heading</h2>
+        <div class="question-container">
+            <div role="heading" aria-level="2">
+                What year did World War II end?
+            </div>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>Test 6: Question Module</h2>
+        <div class="question-container">
+            <div class="Question-module_question_abc123">
+                How many continents are there?
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Log when page loads
+        console.log('Test page loaded. Extension should highlight questions above.');
+
+        // Add a button to dynamically add a question
+        const addButton = document.createElement('button');
+        addButton.textContent = 'Add Dynamic Question (Test Observer)';
+        addButton.style.cssText = 'padding: 10px 20px; font-size: 16px; margin: 20px; cursor: pointer;';
+        addButton.onclick = function() {
+            const newSection = document.createElement('div');
+            newSection.className = 'test-section';
+            newSection.innerHTML = `
+                <h2>Test 7: Dynamically Added Question</h2>
+                <div class="question-container">
+                    <div data-functional-selector="question-text">
+                        This question was added dynamically! (Added at ${new Date().toLocaleTimeString()})
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(newSection);
+            console.log('Dynamic question added');
+        };
+        document.body.insertBefore(addButton, document.body.firstChild);
+    </script>
+</body>
+</html>

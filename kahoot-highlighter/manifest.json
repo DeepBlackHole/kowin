@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "Kahoot Question Highlighter",
+  "version": "2.0.0",
+  "description": "Highlights questions in Kahoot games with smart detection, inspect mode, and manual controls",
+  "permissions": [
+    "activeTab",
+    "storage"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Kahoot Question Highlighter"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.kahoot.it/*",
+        "*://kahoot.it/*",
+        "*://*.kahoot.com/*",
+        "*://kahoot.com/*",
+        "file://*/*"
+      ],
+      "js": ["content.js"],
+      "css": ["styles.css"],
+      "run_at": "document_end",
+      "all_frames": true
+    }
+  ]
+}
